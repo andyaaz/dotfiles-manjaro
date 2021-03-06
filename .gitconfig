@@ -1,0 +1,9 @@
+[user]
+    name = andyaaz
+    email = andyan.work@yahoo.com
+[core]
+    ignorecase = false
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[pull]
+	rebase = false
