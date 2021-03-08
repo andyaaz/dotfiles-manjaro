@@ -130,5 +130,8 @@ alias gwt="git worktree"
 alias gwta="git worktree add"
 alias gwtr="git worktree remove"
 
-# to avoid "Visual Studio Code is unable to watch for file changes in this large workspace" (error ENOSPC)
-echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/50-max-user-watches.conf && sudo sysctl --system
+# to avoid "Visual Studio Code is unable to watch for file changes in this large workspace" (error ENOSPC) if not 524288
+if [ $(cat /proc/sys/fs/inotify/max_user_watches) -ne 524288 ];
+then
+  echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/50-max-user-watches.conf && sudo sysctl --system
+fi
